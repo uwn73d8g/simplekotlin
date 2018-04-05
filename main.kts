@@ -49,55 +49,6 @@ class Person(var firstName: String, var lastName: String, var age: Int) {
 
 // write a class "Money"
 class Money(var amount: Int, var currency: String) {
-    fun convert(cur: String): Money {
-
-        if (cur == currency) {
-            return this
-        }
-
-        return when (currency) {
-            "USD" -> when (cur) {
-                "CAN" -> Money((amount * 1.25).toInt(), cur)
-                "EUR" -> Money((amount * 1.5).toInt(), cur)
-                "GBP" -> Money((amount / 2.0).toInt(), cur)
-                else -> throw IllegalArgumentException()
-            }
-
-            "EUR" -> when (cur) {
-                "CAN" -> Money(((amount * 5.0) / 6).toInt(), cur)
-                "GBP" -> Money((amount / 3.0).toInt(), cur)
-                "USD" -> Money(((amount * 2.0) / 3).toInt(), cur)
-                else -> throw IllegalArgumentException()
-
-            }
-
-            "CAN" -> when (cur) {
-                "USD" -> Money((amount * 0.8).toInt(), cur)
-                "EUR" -> Money((amount * 1.2).toInt(), cur)
-                "GBP" -> Money((amount * 0.4).toInt(), cur)
-                else -> throw IllegalArgumentException()
-            }
-
-            "GBP" -> when (cur) {
-                "EUR" -> Money((amount * 3.0).toInt(), cur)
-                "CAN" -> Money((amount * 2.5).toInt(), cur)
-                "USD" -> Money((amount * 2.0).toInt(), cur)
-                else -> throw IllegalArgumentException()
-
-            }
-
-            else -> throw IllegalArgumentException()
-        }
-
-    }
-
-    operator fun plus(other: Money): Money {
-        return if (this.currency != other.currency) {
-            Money(other.convert(this.currency).amount + this.amount, this.currency)
-        } else {
-            Money(other.amount + this.amount, this.currency)
-        }
-    }
 
 }
 
