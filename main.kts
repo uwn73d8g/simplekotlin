@@ -60,7 +60,7 @@ class Money(var amount: Int, var currency: String) {
                 "CAN" -> Money((amount * 1.25).toInt(), cur)
                 "EUR" -> Money((amount * 1.5).toInt(), cur)
                 "GBP" -> Money((amount / 2.0).toInt(), cur)
-                else -> throw IllegalArgumentException("hello")
+                else -> throw IllegalArgumentException()
             }
 
             "EUR" -> when (cur) {
